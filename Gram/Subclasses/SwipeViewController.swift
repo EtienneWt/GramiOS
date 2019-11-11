@@ -14,6 +14,7 @@ class SwipeViewController: UIViewController {
     var division: CGFloat!
     var compteur : Int = 0
     var data: [modeleMenu]  = []
+    var categorie = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,7 @@ class SwipeViewController: UIViewController {
         data = createMenus()
         swipeCardView.setMenu(menu: data[compteur])
         self.hideKeyboardWhenTappedAround() 
-        
+        print("test" + categorie)
         // Do any additional setup after loading the view.
     }
     
@@ -68,7 +69,7 @@ class SwipeViewController: UIViewController {
                 card.transform = CGAffineTransform(rotationAngle: 0)
             })
             
-            UIView.animate(withDuration: 2, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 card.alpha = 1
             })
         }

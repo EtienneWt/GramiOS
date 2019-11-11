@@ -94,7 +94,6 @@ class MainVC: UIViewController{
     }
     
     @objc func showPanier(){
-        print("panier")
         performSegue(withIdentifier: "showPanier", sender: nil)
         
     }
@@ -112,8 +111,6 @@ class MainVC: UIViewController{
     {
         NotificationCenter.default.post(name: NSNotification.Name("ToggleMenu"), object: nil)
     }
-    
-    
     
     
     
@@ -167,6 +164,7 @@ class MainVC: UIViewController{
         
 
     }
+    
 }
 
     
@@ -287,9 +285,23 @@ extension MainVC : UITableViewDelegate,UITableViewDataSource, UICollectionViewDe
         let categorie = data[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! categoriesCollectionViewCell
         cell.setCategorie(categorie: categorie)
+        cell.addButtonTapAction = {
+            self.performSegue(withIdentifier:
+                "showSwipe", sender: cell
+            )
+        }
         return cell
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
+        if(segue.identifier == "showSwipe"){
+            
+        let menuVC = segue.destination as! SwipeViewController
+        let button = sender as! categoriesCollectionViewCell
+            menuVC.categorie = button.labelCategorie.text!
+    }
+    }
 }
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {

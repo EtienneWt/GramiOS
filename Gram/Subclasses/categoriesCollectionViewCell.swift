@@ -13,13 +13,20 @@ class categoriesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var labelCategorie: UILabel!
 
-
+    @IBOutlet weak var menuButton: UIButton!
+    
     func setCategorie(categorie : Categories) {
         imageCategorie.image = categorie.imageCategorie
         labelCategorie.text = categorie.nomCategorie
+        
     }
 
+    @IBAction func showMenu(_ sender:Any)  {
+            addButtonTapAction?()
+        }
 
+        var addButtonTapAction : (()->())?
+    
 }
 
 
