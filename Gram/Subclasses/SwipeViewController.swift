@@ -21,8 +21,7 @@ class SwipeViewController: UIViewController {
         division = (view.frame.width/2) / 0.61
         data = createMenus()
         swipeCardView.setMenu(menu: data[compteur])
-        self.hideKeyboardWhenTappedAround() 
-        print("test" + categorie)
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     

@@ -16,6 +16,15 @@
 		FC029F6C22E0CAC4002F531B /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC029F6B22E0CAC4002F531B /* MainVC.swift */; };
 		FC052F6E22C4FF31001B5C74 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = FC052F6D22C4FF31001B5C74 /* menu.png */; };
 		FC07DA2B22BFA801003FB47A /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07DA2A22BFA801003FB47A /* DesignableButton.swift */; };
+		FC08C2DA237ABE6700EC0879 /* category.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2D9237ABE6700EC0879 /* category.swift */; };
+		FC08C2DC237ABE8F00EC0879 /* filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2DB237ABE8E00EC0879 /* filter.swift */; };
+		FC08C2DE237ABEA500EC0879 /* ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2DD237ABEA500EC0879 /* ingredient.swift */; };
+		FC08C2E0237ABF1600EC0879 /* order.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2DF237ABF1500EC0879 /* order.swift */; };
+		FC08C2E2237ABF2E00EC0879 /* promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2E1237ABF2E00EC0879 /* promotion.swift */; };
+		FC08C2E4237ABF5200EC0879 /* recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2E3237ABF5200EC0879 /* recipe.swift */; };
+		FC08C2E6237ABF6500EC0879 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2E5237ABF6500EC0879 /* user.swift */; };
+		FC08C2E8237ABF7300EC0879 /* utensil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2E7237ABF7300EC0879 /* utensil.swift */; };
+		FC08C2EA237AEF5000EC0879 /* inscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2E9237AEF5000EC0879 /* inscriptionViewController.swift */; };
 		FC0EA117237852640097C85E /* categorieCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EA116237852640097C85E /* categorieCollectionView.swift */; };
 		FC168BE7236DC0A5005ACA4E /* dataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC168BE5236DC0A5005ACA4E /* dataModel.xcdatamodeld */; };
 		FC23DF5922E889D400E33693 /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23DF5822E889D300E33693 /* Menus.swift */; };
@@ -64,6 +73,15 @@
 		FC029F6B22E0CAC4002F531B /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		FC052F6D22C4FF31001B5C74 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = ../../../../Downloads/menu.png; sourceTree = "<group>"; };
 		FC07DA2A22BFA801003FB47A /* DesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
+		FC08C2D9237ABE6700EC0879 /* category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = category.swift; sourceTree = "<group>"; };
+		FC08C2DB237ABE8E00EC0879 /* filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filter.swift; sourceTree = "<group>"; };
+		FC08C2DD237ABEA500EC0879 /* ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ingredient.swift; sourceTree = "<group>"; };
+		FC08C2DF237ABF1500EC0879 /* order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = order.swift; sourceTree = "<group>"; };
+		FC08C2E1237ABF2E00EC0879 /* promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = promotion.swift; sourceTree = "<group>"; };
+		FC08C2E3237ABF5200EC0879 /* recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipe.swift; sourceTree = "<group>"; };
+		FC08C2E5237ABF6500EC0879 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
+		FC08C2E7237ABF7300EC0879 /* utensil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utensil.swift; sourceTree = "<group>"; };
+		FC08C2E9237AEF5000EC0879 /* inscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inscriptionViewController.swift; sourceTree = "<group>"; };
 		FC0EA116237852640097C85E /* categorieCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categorieCollectionView.swift; sourceTree = "<group>"; };
 		FC168BE6236DC0A5005ACA4E /* dataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dataModel.xcdatamodel; sourceTree = "<group>"; };
 		FC23DF5822E889D300E33693 /* Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menus.swift; sourceTree = "<group>"; };
@@ -121,6 +139,14 @@
 			children = (
 				FC23DF6622EA173900E33693 /* modeleMenu.swift */,
 				FC01620722EDC48100135472 /* Categories.swift */,
+				FC08C2D9237ABE6700EC0879 /* category.swift */,
+				FC08C2DB237ABE8E00EC0879 /* filter.swift */,
+				FC08C2DD237ABEA500EC0879 /* ingredient.swift */,
+				FC08C2DF237ABF1500EC0879 /* order.swift */,
+				FC08C2E1237ABF2E00EC0879 /* promotion.swift */,
+				FC08C2E3237ABF5200EC0879 /* recipe.swift */,
+				FC08C2E5237ABF6500EC0879 /* user.swift */,
+				FC08C2E7237ABF7300EC0879 /* utensil.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -135,6 +161,7 @@
 				FC23DF5822E889D300E33693 /* Menus.swift */,
 				FCEB71BD22D76E7A00672093 /* ContainerVC.swift */,
 				FC029F6B22E0CAC4002F531B /* MainVC.swift */,
+				FC08C2E9237AEF5000EC0879 /* inscriptionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -363,13 +390,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC08C2E8237ABF7300EC0879 /* utensil.swift in Sources */,
 				FC6A3BCD22BE568D001CCB30 /* ViewController.swift in Sources */,
+				FC08C2DE237ABEA500EC0879 /* ingredient.swift in Sources */,
+				FC08C2DC237ABE8F00EC0879 /* filter.swift in Sources */,
 				FC01620822EDC48100135472 /* Categories.swift in Sources */,
 				FC23DF6B22EB34CE00E33693 /* FavorisTableViewCell.swift in Sources */,
+				FC08C2E6237ABF6500EC0879 /* user.swift in Sources */,
+				FC08C2E2237ABF2E00EC0879 /* promotion.swift in Sources */,
 				FCEB71BE22D76E7A00672093 /* ContainerVC.swift in Sources */,
+				FC08C2E4237ABF5200EC0879 /* recipe.swift in Sources */,
 				FC01620F22EDEDE400135472 /* AccueilTableView.swift in Sources */,
 				FC01FF8322EB64710016ABC5 /* SwipeView.swift in Sources */,
 				FC0EA117237852640097C85E /* categorieCollectionView.swift in Sources */,
+				FC08C2DA237ABE6700EC0879 /* category.swift in Sources */,
 				FC01620A22EDC4BF00135472 /* categoriesCollectionViewCell.swift in Sources */,
 				FC23DF5922E889D400E33693 /* Menus.swift in Sources */,
 				FC168BE7236DC0A5005ACA4E /* dataModel.xcdatamodeld in Sources */,
@@ -377,7 +411,9 @@
 				FC01FF8522EB654A0016ABC5 /* SwipeViewController.swift in Sources */,
 				FC6A3BFB22BE6941001CCB30 /* DesignableTextField.swift in Sources */,
 				FC23DF6322E9E7B200E33693 /* MenusTableViewCell.swift in Sources */,
+				FC08C2EA237AEF5000EC0879 /* inscriptionViewController.swift in Sources */,
 				FC23DF6722EA173900E33693 /* modeleMenu.swift in Sources */,
+				FC08C2E0237ABF1600EC0879 /* order.swift in Sources */,
 				FC23DF6922EB348600E33693 /* FavorisViewController.swift in Sources */,
 				FC6A3BCB22BE568D001CCB30 /* AppDelegate.swift in Sources */,
 				FCEB71BC22D76BFF00672093 /* SideMenuVC.swift in Sources */,

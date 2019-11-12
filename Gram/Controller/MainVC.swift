@@ -19,7 +19,7 @@ class MainVC: UIViewController{
     var isEcoExpanded : Bool = false
     var isNutriExpanded : Bool = false
     var isEcoloExpanded : Bool = false
-    
+    private static let quoteUrl = URL(string: "http://localhost:3000/category")!
     
     
     
@@ -66,6 +66,33 @@ class MainVC: UIViewController{
                                                       name: NSNotification.Name("Deconnexion"),
                                                       object: nil)
     }
+        static func getCategories() {
+            let request = createCategoryRequest()
+            let session = URLSession(configuration: .default)
+
+            let task = session.dataTask(with: request) { (data, response, error) in
+                if let data = data, error == nil {
+                    if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                        if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data),
+                            let category = responseJSON["name"],
+                            let categoryImage = responseJSON["image_id"] {
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+
+        private static func createCategoryRequest() -> URLRequest {
+            var request = URLRequest(url: quoteUrl)
+            request.httpMethod = "POST"
+
+            let body = "method=getQuote&lang=en&format=json"
+            request.httpBody = body.data(using: .utf8)
+
+            return request
+        }
+    
     
     @objc func showAccueil(){
         /*
@@ -117,7 +144,6 @@ class MainVC: UIViewController{
     func createCategories() -> [Categories]{
         var menus: [Categories] = []
         let menu1 = Categories(imageCategorie: #imageLiteral(resourceName: "menu.png"), nomCategorie: "Vegan")
-        print("fait")
         let menu2 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Vegans")
         let menu3 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Veganss")
         let menu4 = Categories(imageCategorie: #imageLiteral(resourceName: "menu.png"), nomCategorie: "Vegan")
@@ -238,7 +264,6 @@ extension MainVC : UITableViewDelegate,UITableViewDataSource, UICollectionViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(indexPath.row)
         if (indexPath.row == 0)
         {
             indexCategories = indexPath

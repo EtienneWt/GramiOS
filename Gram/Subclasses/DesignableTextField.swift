@@ -11,6 +11,21 @@ import UIKit
 @IBDesignable
 
 class DesignableTextField: UITextField {
+    
+    let padding = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 5)
+
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+
+    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    
     @IBInspectable var cornerRadius : CGFloat = 0{
         didSet{
             layer.cornerRadius = cornerRadius
@@ -32,7 +47,7 @@ class DesignableTextField: UITextField {
     func updateView(){
         
         if let image = leftImage {
-            leftViewMode = .unlessEditing
+            leftViewMode = .always
             
             let imageView = UIImageView(frame: CGRect(x: leftpadding, y: 0, width: 20, height: 20))
             imageView.image = image

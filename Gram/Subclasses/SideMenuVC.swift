@@ -12,7 +12,6 @@ class SideMenuVC: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.section)
         
         switch(indexPath.section) {
         case 3 : NotificationCenter.default.post(name : NSNotification.Name("Accueil"), object: nil)
