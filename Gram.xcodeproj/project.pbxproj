@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,8 @@
 		FC08C2E6237ABF6500EC0879 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2E5237ABF6500EC0879 /* user.swift */; };
 		FC08C2E8237ABF7300EC0879 /* utensil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2E7237ABF7300EC0879 /* utensil.swift */; };
 		FC08C2EA237AEF5000EC0879 /* inscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2E9237AEF5000EC0879 /* inscriptionViewController.swift */; };
+		FC093F142382BB2E00AE69D0 /* Pods_Gram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3551FC9D883C4E0899732C /* Pods_Gram.framework */; };
+		FC093F1C2382E59400AE69D0 /* accueilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC093F1B2382E59400AE69D0 /* accueilViewController.swift */; };
 		FC0EA117237852640097C85E /* categorieCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EA116237852640097C85E /* categorieCollectionView.swift */; };
 		FC168BE7236DC0A5005ACA4E /* dataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC168BE5236DC0A5005ACA4E /* dataModel.xcdatamodeld */; };
 		FC23DF5922E889D400E33693 /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23DF5822E889D300E33693 /* Menus.swift */; };
@@ -64,6 +66,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D3551FC9D883C4E0899732C /* Pods_Gram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63C102D9356492FA259103F3 /* Pods-Gram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gram.release.xcconfig"; path = "Target Support Files/Pods-Gram/Pods-Gram.release.xcconfig"; sourceTree = "<group>"; };
+		6759BCE712484C9169421091 /* Pods-Gram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gram.debug.xcconfig"; path = "Target Support Files/Pods-Gram/Pods-Gram.debug.xcconfig"; sourceTree = "<group>"; };
 		FC01620722EDC48100135472 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Categories.swift; path = Subclasses/Categories.swift; sourceTree = "<group>"; };
 		FC01620922EDC4BF00135472 /* categoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC01620C22EDED8200135472 /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
@@ -82,6 +87,7 @@
 		FC08C2E5237ABF6500EC0879 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		FC08C2E7237ABF7300EC0879 /* utensil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utensil.swift; sourceTree = "<group>"; };
 		FC08C2E9237AEF5000EC0879 /* inscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inscriptionViewController.swift; sourceTree = "<group>"; };
+		FC093F1B2382E59400AE69D0 /* accueilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accueilViewController.swift; sourceTree = "<group>"; };
 		FC0EA116237852640097C85E /* categorieCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categorieCollectionView.swift; sourceTree = "<group>"; };
 		FC168BE6236DC0A5005ACA4E /* dataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dataModel.xcdatamodel; sourceTree = "<group>"; };
 		FC23DF5822E889D300E33693 /* Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menus.swift; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC093F142382BB2E00AE69D0 /* Pods_Gram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +141,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37BC492694610727BD27AEA8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6759BCE712484C9169421091 /* Pods-Gram.debug.xcconfig */,
+				63C102D9356492FA259103F3 /* Pods-Gram.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A379D7B32AA07495EEF26B8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D3551FC9D883C4E0899732C /* Pods_Gram.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FC01620B22EDC4D400135472 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +171,7 @@
 				FC08C2E3237ABF5200EC0879 /* recipe.swift */,
 				FC08C2E5237ABF6500EC0879 /* user.swift */,
 				FC08C2E7237ABF7300EC0879 /* utensil.swift */,
+				FC01FF8222EB64710016ABC5 /* SwipeView.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -162,6 +187,7 @@
 				FCEB71BD22D76E7A00672093 /* ContainerVC.swift */,
 				FC029F6B22E0CAC4002F531B /* MainVC.swift */,
 				FC08C2E9237AEF5000EC0879 /* inscriptionViewController.swift */,
+				FC093F1B2382E59400AE69D0 /* accueilViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -174,7 +200,6 @@
 				FCEB71BB22D76BFE00672093 /* SideMenuVC.swift */,
 				FC23DF6222E9E7B200E33693 /* MenusTableViewCell.swift */,
 				FC23DF6A22EB34CE00E33693 /* FavorisTableViewCell.swift */,
-				FC01FF8222EB64710016ABC5 /* SwipeView.swift */,
 				FC01620922EDC4BF00135472 /* categoriesCollectionViewCell.swift */,
 				FC01620C22EDED8200135472 /* CategoriesTableViewCell.swift */,
 				FC01620E22EDEDE400135472 /* AccueilTableView.swift */,
@@ -199,6 +224,8 @@
 				FC6A3BDE22BE568F001CCB30 /* GramTests */,
 				FC6A3BE922BE568F001CCB30 /* GramUITests */,
 				FC6A3BC822BE568D001CCB30 /* Products */,
+				37BC492694610727BD27AEA8 /* Pods */,
+				A379D7B32AA07495EEF26B8A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 0;
@@ -263,15 +290,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC6A3BEF22BE568F001CCB30 /* Build configuration list for PBXNativeTarget "Gram" */;
 			buildPhases = (
+				A6CBF807D9A089B144048F2B /* [CP] Check Pods Manifest.lock */,
 				FC6A3BC322BE568D001CCB30 /* Sources */,
 				FC6A3BC422BE568D001CCB30 /* Frameworks */,
 				FC6A3BC522BE568D001CCB30 /* Resources */,
+				8A6E44ED6868F6E9804F13E7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Gram;
+			packageProductDependencies = (
+			);
 			productName = Gram;
 			productReference = FC6A3BC722BE568D001CCB30 /* Gram.app */;
 			productType = "com.apple.product-type.application";
@@ -344,6 +375,10 @@
 				Base,
 			);
 			mainGroup = FC6A3BBE22BE568D001CCB30;
+			packageReferences = (
+				FCEB204D2382B32900919E1B /* XCRemoteSwiftPackageReference "Alamofire" */,
+				FCEB20502382B41800919E1B /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+			);
 			productRefGroup = FC6A3BC822BE568D001CCB30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -385,12 +420,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8A6E44ED6868F6E9804F13E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Gram/Pods-Gram-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Gram/Pods-Gram-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gram/Pods-Gram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6CBF807D9A089B144048F2B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gram-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FC6A3BC322BE568D001CCB30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FC08C2E8237ABF7300EC0879 /* utensil.swift in Sources */,
+				FC093F1C2382E59400AE69D0 /* accueilViewController.swift in Sources */,
 				FC6A3BCD22BE568D001CCB30 /* ViewController.swift in Sources */,
 				FC08C2DE237ABEA500EC0879 /* ingredient.swift in Sources */,
 				FC08C2DC237ABE8F00EC0879 /* filter.swift in Sources */,
@@ -591,6 +669,7 @@
 		};
 		FC6A3BF022BE568F001CCB30 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6759BCE712484C9169421091 /* Pods-Gram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -610,6 +689,7 @@
 		};
 		FC6A3BF122BE568F001CCB30 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63C102D9356492FA259103F3 /* Pods-Gram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -745,6 +825,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FCEB204D2382B32900919E1B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.9.1;
+			};
+		};
+		FCEB20502382B41800919E1B /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCVersionGroup section */
 		FC168BE5236DC0A5005ACA4E /* dataModel.xcdatamodeld */ = {

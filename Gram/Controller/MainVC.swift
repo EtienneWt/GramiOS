@@ -8,30 +8,24 @@
 
 import UIKit
 
-
 class MainVC: UIViewController{
      
     @IBOutlet weak var AccueilTableView: AccueilTableView!
-    
-    var data: [Categories]  = []
+    var prepareCategories: [Category]  = []
+    static var Categories: [Category]  = []
     var isCategoriesExpanded : Bool = false
     var isGainExpanded : Bool = false
     var isEcoExpanded : Bool = false
     var isNutriExpanded : Bool = false
     var isEcoloExpanded : Bool = false
-    private static let quoteUrl = URL(string: "http://localhost:3000/category")!
-    
-    
-    
-    
+    private static let categoryUrl = URL(string: "http://localhost:3000/category")!
+    var collectionViewHeight : CGSize = CGSize(width: 0, height: 0)
     var indexCategories : IndexPath = IndexPath(row: 0, section: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        data = createCategories()
-        
+        MainVC.getCategories()
         self.hideKeyboardWhenTappedAround()
-        
         NotificationCenter.default.addObserver(self,
                                                       selector: #selector(showAccueil),
                                                       name: NSNotification.Name("Accueil"),
@@ -73,10 +67,8 @@ class MainVC: UIViewController{
             let task = session.dataTask(with: request) { (data, response, error) in
                 if let data = data, error == nil {
                     if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                        if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data),
-                            let category = responseJSON["name"],
-                            let categoryImage = responseJSON["image_id"] {
-                        }
+                        let categories = try? JSONDecoder().decode([Category].self, from: data)
+                        Categories = categories!
                     }
                 }
             }
@@ -84,11 +76,8 @@ class MainVC: UIViewController{
         }
 
         private static func createCategoryRequest() -> URLRequest {
-            var request = URLRequest(url: quoteUrl)
-            request.httpMethod = "POST"
-
-            let body = "method=getQuote&lang=en&format=json"
-            request.httpBody = body.data(using: .utf8)
+            var request = URLRequest(url: categoryUrl)
+            request.httpMethod = "GET"
 
             return request
         }
@@ -139,62 +128,23 @@ class MainVC: UIViewController{
         NotificationCenter.default.post(name: NSNotification.Name("ToggleMenu"), object: nil)
     }
     
-    
-    
-    func createCategories() -> [Categories]{
-        var menus: [Categories] = []
-        let menu1 = Categories(imageCategorie: #imageLiteral(resourceName: "menu.png"), nomCategorie: "Vegan")
-        let menu2 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Vegans")
-        let menu3 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Veganss")
-        let menu4 = Categories(imageCategorie: #imageLiteral(resourceName: "menu.png"), nomCategorie: "Vegan")
-        let menu5 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Vegans")
-        let menu6 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Veganss")
-        let menu7 = Categories(imageCategorie: #imageLiteral(resourceName: "menu.png"), nomCategorie: "Vegan")
-        let menu8 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Vegans")
-        let menu9 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Veganss")
-        let menu10 = Categories(imageCategorie: #imageLiteral(resourceName: "menu.png"), nomCategorie: "Vegan")
-        let menu11 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Vegans")
-        let menu12 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Veganss")
-        let menu13 = Categories(imageCategorie: #imageLiteral(resourceName: "menu.png"), nomCategorie: "Vegan")
-        let menu14 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Vegans")
-        let menu15 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Veganss")
-        let menu16 = Categories(imageCategorie: #imageLiteral(resourceName: "menu.png"), nomCategorie: "Vegan")
-        let menu17 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Vegans")
-        let menu18 = Categories(imageCategorie: #imageLiteral(resourceName: "close-envelope.png"), nomCategorie: "Veganss")
-        menus.append(menu1)
-        menus.append(menu2)
-        menus.append(menu3)
-        menus.append(menu4)
-        menus.append(menu5)
-        menus.append(menu6)
-        menus.append(menu7)
-        menus.append(menu8)
-        menus.append(menu9)
-        menus.append(menu10)
-        menus.append(menu11)
-        menus.append(menu12)
-        menus.append(menu13)
-        menus.append(menu14)
-        menus.append(menu15)
-        menus.append(menu16)
-        menus.append(menu17)
-        menus.append(menu18)
-        return menus
-    }
     @IBAction func expandCategorie(_ sender: Any) {
     
-            isCategoriesExpanded = !isCategoriesExpanded
-            AccueilTableView.beginUpdates()
+        isCategoriesExpanded = !isCategoriesExpanded
+        AccueilTableView.beginUpdates()
         AccueilTableView.reloadRows(at: [indexCategories], with: .automatic)
         AccueilTableView.endUpdates()
         
 
     }
-    
+    func reloadData() {
+        isCategoriesExpanded = !isCategoriesExpanded
+        self.AccueilTableView.beginUpdates()
+        self.AccueilTableView.reloadRows(at: [indexCategories], with: .automatic)
+        self.AccueilTableView.endUpdates()
+    }
 }
 
-    
-    
     
 
 extension MainVC : UITableViewDelegate,UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -215,7 +165,7 @@ extension MainVC : UITableViewDelegate,UITableViewDataSource, UICollectionViewDe
         switch indexPath.row {
         case 0:
             if(isCategoriesExpanded){
-                return 950
+                return CGFloat(prepareCategories.count * 50)
             }else{
             return 200
             }
@@ -266,13 +216,13 @@ extension MainVC : UITableViewDelegate,UITableViewDataSource, UICollectionViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0)
         {
+            MainVC.getCategories()
             indexCategories = indexPath
             let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
             
             return cell
         }
         if(indexPath.row == 1){
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "ExpandCell", for: indexPath)
             return cell
         }
@@ -302,12 +252,12 @@ extension MainVC : UITableViewDelegate,UITableViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return prepareCategories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        self.data = createCategories()
-        let categorie = data[indexPath.row]
+        MainVC.getCategories()
+        let categorie = prepareCategories[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! categoriesCollectionViewCell
         cell.setCategorie(categorie: categorie)
         cell.addButtonTapAction = {
@@ -322,9 +272,9 @@ extension MainVC : UITableViewDelegate,UITableViewDataSource, UICollectionViewDe
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
         if(segue.identifier == "showSwipe"){
             
-        let menuVC = segue.destination as! SwipeViewController
-        let button = sender as! categoriesCollectionViewCell
-            menuVC.categorie = button.labelCategorie.text!
+        let swipeVC = segue.destination as! SwipeViewController
+        let senderCell = sender as! categoriesCollectionViewCell
+        SwipeViewController.recipesUrl = URL(string:"http://localhost:3000/recipes/category/" + senderCell.labelCategorie.text!)!
     }
     }
 }

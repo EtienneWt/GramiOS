@@ -15,9 +15,11 @@ class SwipeView: UIView {
     @IBOutlet weak var detailsSwipe: UILabel!
     
     
-    func setMenu(menu : modeleMenu) {
-        imageSwipe.image = menu.image
-        nomSwipe.text = menu.nom
-        detailsSwipe.text = menu.details
+    func setMenu(recipe : recipe) {
+        let fullURL = URL(string : "http://localhost:3000/images/recipes_carousel/" + recipe.pictureID)!
+        imageCategorie.af_setImage(withURL: fullURL )
+        imageSwipe.image.af_setImage(withURL: fullURL) =
+        nomSwipe.text = recipe.name
+        detailsSwipe.text = recipe.recipeDescription
     }
 }

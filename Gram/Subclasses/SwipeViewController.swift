@@ -13,30 +13,46 @@ class SwipeViewController: UIViewController {
     @IBOutlet var swipeCardView: SwipeView!
     var division: CGFloat!
     var compteur : Int = 0
-    var data: [modeleMenu]  = []
+    static var recipeList: [recipe]  = []
     var categorie = ""
+    let recipesUrl = URL(string: "")!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         division = (view.frame.width/2) / 0.61
-        data = createMenus()
-        swipeCardView.setMenu(menu: data[compteur])
+        SwipeViewController.recipeList = createMenus()
+        swipeCardView.setMenu(recipe: recipeList[compteur])
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     
 
-    func createMenus() -> [modeleMenu]{
-        var menus: [modeleMenu] = []
-        let menu1 = modeleMenu(image: #imageLiteral(resourceName: "menu.png"), nom: "MEr", details: "RERERERERERERERERERER")
-        let menu2 = modeleMenu(image: #imageLiteral(resourceName: "menu.png"), nom: "Mpo", details: "RERERERERERERERERERER")
-        let menu3 = modeleMenu(image: #imageLiteral(resourceName: "menu.png"), nom: "Mml", details: "RERERERERERERERERERER")
-        menus.append(menu1)
-        menus.append(menu2)
-        menus.append(menu3)
-        return menus
+    func createMenus() -> [recipe]{
+        
     }
-    
+
+    static func getRecipes() {
+        let request = createRecipesRequest()
+        let session = URLSession(configuration: .default)
+
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let data = data, error == nil {
+                if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                    let categories = try? JSONDecoder().decode([recipe].self, from: data)
+                    SwipeViewController.recipeList = categories!
+                }
+            }
+        }
+        task.resume()
+    }
+
+    private static func createRecipesRequest() -> URLRequest {
+        var request = URLRequest(url: recipesUrl + SwipeViewController.categorie)
+        request.httpMethod = "GET"
+
+        return request
+    }
     
     @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
@@ -79,12 +95,12 @@ class SwipeViewController: UIViewController {
     func Swiped(card : UIView) {
         card.alpha = 0
         card.center = self.view.center
-        if(compteur < data.count - 1){
+        if(compteur < SwipeViewController.recipeList.count - 1){
         compteur = compteur + 1
         }else{
             compteur = 0
         }
-        swipeCardView.setMenu(menu: data[compteur])
+        swipeCardView.setMenu(menu: recipeList[compteur])
     }
     /*
     // MARK: - Navigation

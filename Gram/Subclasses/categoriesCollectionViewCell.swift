@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class categoriesCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var imageCategorie: UIImageView!
     
     @IBOutlet weak var labelCategorie: UILabel!
 
     @IBOutlet weak var menuButton: UIButton!
     
-    func setCategorie(categorie : Categories) {
-        imageCategorie.image = categorie.imageCategorie
-        labelCategorie.text = categorie.nomCategorie
-        
+    func setCategorie(categorie : Category) {
+         labelCategorie.text = categorie.name
+        let fullURL = URL(string : "http://localhost:3000/images/categories/" + categorie.imageID + ".png")!
+        imageCategorie.af_setImage(withURL: fullURL )
     }
 
     @IBAction func showMenu(_ sender:Any)  {
@@ -28,5 +31,4 @@ class categoriesCollectionViewCell: UICollectionViewCell {
         var addButtonTapAction : (()->())?
     
 }
-
 

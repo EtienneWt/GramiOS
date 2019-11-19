@@ -10,14 +10,16 @@ import UIKit
 
 class ContainerVC: UIViewController {
     
+    static var Categories: [Category]  = []
+    var prepareCategories: [Category]  = []
+    private static let categoryUrl = URL(string: "http://localhost:3000/category")!
     
     @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
     
     var menuisHidden : Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.hideKeyboardWhenTappedAround()
+        ContainerVC.getCategories()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(toggleMenu),
                                                name: NSNotification.Name("ToggleMenu"),
@@ -43,5 +45,36 @@ class ContainerVC: UIViewController {
             
         }
         menuisHidden = !menuisHidden
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
+        if(segue.identifier == "MainVCEmbedSegue"){
+            ContainerVC.getCategories()
+            let MainVC = segue.destination as! MainVC
+            MainVC.prepareCategories = prepareCategories
+            print(ContainerVC.Categories)
+            print(MainVC.prepareCategories)
+    }
+    }
+
+    static func getCategories() {
+        let request = createCategoryRequest()
+        let session = URLSession(configuration: .default)
+
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let data = data, error == nil {
+                if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                    ContainerVC.Categories = try! JSONDecoder().decode([Category].self, from: data)
+                }
+            }
+        }
+        task.resume()
+    }
+
+    private static func createCategoryRequest() -> URLRequest {
+        var request = URLRequest(url: categoryUrl)
+        request.httpMethod = "GET"
+
+        return request
     }
 }
