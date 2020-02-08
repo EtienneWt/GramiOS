@@ -7,48 +7,44 @@
 //
 
 import UIKit
-
+import Alamofire
 class SwipeViewController: UIViewController {
 
     @IBOutlet var swipeCardView: SwipeView!
     var division: CGFloat!
     var compteur : Int = 0
-    static var recipeList: [recipe]  = []
     var categorie = ""
-    let recipesUrl = URL(string: "")!
-    
+    var recipesURL = ""
+    var recipesList: recipeList?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         division = (view.frame.width/2) / 0.61
-        SwipeViewController.recipeList = createMenus()
-        swipeCardView.setMenu(recipe: recipeList[compteur])
+        var recipes = try? recipeList(fromURL : URL(string : recipesURL)!)
+        recipesList = recipes
         self.hideKeyboardWhenTappedAround()
+
         // Do any additional setup after loading the view.
     }
     
 
-    func createMenus() -> [recipe]{
-        
-    }
-
-    static func getRecipes() {
+     func getRecipes() {
         let request = createRecipesRequest()
         let session = URLSession(configuration: .default)
-
         let task = session.dataTask(with: request) { (data, response, error) in
             if let data = data, error == nil {
                 if let response = response as? HTTPURLResponse, response.statusCode == 200 {
                     let categories = try? JSONDecoder().decode([recipe].self, from: data)
-                    SwipeViewController.recipeList = categories!
+                    self.recipesList?.List = categories!
                 }
             }
         }
         task.resume()
     }
 
-    private static func createRecipesRequest() -> URLRequest {
-        var request = URLRequest(url: recipesUrl + SwipeViewController.categorie)
+    private func createRecipesRequest() -> URLRequest {
+        let fullURL = URL(string: "http://localhost:3000/recipes/category/" + self.recipesURL)!
+        var request = URLRequest(url: fullURL)
         request.httpMethod = "GET"
 
         return request
@@ -95,12 +91,12 @@ class SwipeViewController: UIViewController {
     func Swiped(card : UIView) {
         card.alpha = 0
         card.center = self.view.center
-        if(compteur < SwipeViewController.recipeList.count - 1){
+        if(compteur < (recipesList?.List.count)! - 1){
         compteur = compteur + 1
         }else{
             compteur = 0
         }
-        swipeCardView.setMenu(menu: recipeList[compteur])
+        swipeCardView.setMenu(recipe: (recipesList?.List[compteur])!)
     }
     /*
     // MARK: - Navigation

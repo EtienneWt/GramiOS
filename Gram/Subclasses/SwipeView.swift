@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class SwipeView: UIView {
 
@@ -17,8 +19,7 @@ class SwipeView: UIView {
     
     func setMenu(recipe : recipe) {
         let fullURL = URL(string : "http://localhost:3000/images/recipes_carousel/" + recipe.pictureID)!
-        imageCategorie.af_setImage(withURL: fullURL )
-        imageSwipe.image.af_setImage(withURL: fullURL) =
+        imageSwipe.af_setImage(withURL: fullURL)
         nomSwipe.text = recipe.name
         detailsSwipe.text = recipe.recipeDescription
     }

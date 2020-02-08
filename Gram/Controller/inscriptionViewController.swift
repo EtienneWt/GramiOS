@@ -17,7 +17,6 @@ class inscriptionViewController: UIViewController {
     }
     
     @IBAction func goBackGesture(_ sender: Any) {
-        print("re");
         self.performSegue(withIdentifier: "inscriptionControllerToFirstScreen", sender: sender)
     }
     

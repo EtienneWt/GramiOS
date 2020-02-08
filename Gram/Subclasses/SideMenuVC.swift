@@ -18,7 +18,7 @@ class SideMenuVC: UITableViewController {
             break
             case 4 : NotificationCenter.default.post(name : NSNotification.Name("Favoris"), object: nil)
             break
-            case 5 : NotificationCenter.default.post(name : NSNotification.Name("Swipe"), object: nil)
+            case 5 : NotificationCenter.default.post(name : NSNotification.Name("Panier"), object: nil)
             break
             case 6 : NotificationCenter.default.post(name : NSNotification.Name("Gram"), object: nil)
             break

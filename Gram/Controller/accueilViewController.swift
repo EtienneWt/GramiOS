@@ -22,35 +22,8 @@ class accueilViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
         if(segue.identifier == "showMainVC"){
-            accueilViewController.getCategories()
-            sleep(1)
             let MainVC = segue.destination as! ContainerVC
             MainVC.prepareCategories = accueilViewController.Categories
-            print("test")
-            print(accueilViewController.Categories)
     }
-    }
-
-    static func getCategories() {
-        let request = createCategoryRequest()
-        let session = URLSession(configuration: .default)
-
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let data = data, error == nil {
-                if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                    let categories = try? JSONDecoder().decode([Category].self, from: data)
-                    self.Categories = categories!
-                    print(self.Categories)
-                }
-            }
-        }
-        task.resume()
-    }
-
-    private static func createCategoryRequest() -> URLRequest {
-        var request = URLRequest(url: categoryUrl)
-        request.httpMethod = "GET"
-
-        return request
     }
 }

@@ -52,8 +52,6 @@ class ContainerVC: UIViewController {
             ContainerVC.getCategories()
             let MainVC = segue.destination as! MainVC
             MainVC.prepareCategories = prepareCategories
-            print(ContainerVC.Categories)
-            print(MainVC.prepareCategories)
     }
     }
 

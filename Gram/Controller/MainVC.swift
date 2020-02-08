@@ -21,10 +21,11 @@ class MainVC: UIViewController{
     private static let categoryUrl = URL(string: "http://localhost:3000/category")!
     var collectionViewHeight : CGSize = CGSize(width: 0, height: 0)
     var indexCategories : IndexPath = IndexPath(row: 0, section: 0)
+    var catGet : categoryGetter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MainVC.getCategories()
+        print(catGet?.getCategories())
         self.hideKeyboardWhenTappedAround()
         NotificationCenter.default.addObserver(self,
                                                       selector: #selector(showAccueil),
@@ -137,12 +138,6 @@ class MainVC: UIViewController{
         
 
     }
-    func reloadData() {
-        isCategoriesExpanded = !isCategoriesExpanded
-        self.AccueilTableView.beginUpdates()
-        self.AccueilTableView.reloadRows(at: [indexCategories], with: .automatic)
-        self.AccueilTableView.endUpdates()
-    }
 }
 
     
@@ -216,7 +211,6 @@ extension MainVC : UITableViewDelegate,UITableViewDataSource, UICollectionViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0)
         {
-            MainVC.getCategories()
             indexCategories = indexPath
             let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
             
@@ -256,7 +250,6 @@ extension MainVC : UITableViewDelegate,UITableViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        MainVC.getCategories()
         let categorie = prepareCategories[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! categoriesCollectionViewCell
         cell.setCategorie(categorie: categorie)
@@ -274,8 +267,14 @@ extension MainVC : UITableViewDelegate,UITableViewDataSource, UICollectionViewDe
             
         let swipeVC = segue.destination as! SwipeViewController
         let senderCell = sender as! categoriesCollectionViewCell
-        SwipeViewController.recipesUrl = URL(string:"http://localhost:3000/recipes/category/" + senderCell.labelCategorie.text!)!
-    }
+            swipeVC.recipesURL = "http://localhost:3000/recipes"
+        }
+        if(segue.identifier == "showPanier"){
+            
+        let swipeVC = segue.destination as! SwipeViewController
+        let senderCell = sender as! categoriesCollectionViewCell
+            swipeVC.recipesURL = "http://localhost:3000/recipes"
+        }
     }
 }
 extension UIViewController {

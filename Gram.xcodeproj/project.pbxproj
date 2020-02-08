@@ -25,8 +25,10 @@
 		FC08C2E6237ABF6500EC0879 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2E5237ABF6500EC0879 /* user.swift */; };
 		FC08C2E8237ABF7300EC0879 /* utensil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2E7237ABF7300EC0879 /* utensil.swift */; };
 		FC08C2EA237AEF5000EC0879 /* inscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08C2E9237AEF5000EC0879 /* inscriptionViewController.swift */; };
+		FC091211239A92C80097C0A7 /* recipeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC091210239A92C80097C0A7 /* recipeList.swift */; };
 		FC093F142382BB2E00AE69D0 /* Pods_Gram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3551FC9D883C4E0899732C /* Pods_Gram.framework */; };
 		FC093F1C2382E59400AE69D0 /* accueilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC093F1B2382E59400AE69D0 /* accueilViewController.swift */; };
+		FC0C5605239A603B00F165D7 /* Getters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0C5604239A603B00F165D7 /* Getters.swift */; };
 		FC0EA117237852640097C85E /* categorieCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EA116237852640097C85E /* categorieCollectionView.swift */; };
 		FC168BE7236DC0A5005ACA4E /* dataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC168BE5236DC0A5005ACA4E /* dataModel.xcdatamodeld */; };
 		FC23DF5922E889D400E33693 /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23DF5822E889D300E33693 /* Menus.swift */; };
@@ -87,7 +89,9 @@
 		FC08C2E5237ABF6500EC0879 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		FC08C2E7237ABF7300EC0879 /* utensil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utensil.swift; sourceTree = "<group>"; };
 		FC08C2E9237AEF5000EC0879 /* inscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inscriptionViewController.swift; sourceTree = "<group>"; };
+		FC091210239A92C80097C0A7 /* recipeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeList.swift; sourceTree = "<group>"; };
 		FC093F1B2382E59400AE69D0 /* accueilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accueilViewController.swift; sourceTree = "<group>"; };
+		FC0C5604239A603B00F165D7 /* Getters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Getters.swift; sourceTree = "<group>"; };
 		FC0EA116237852640097C85E /* categorieCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categorieCollectionView.swift; sourceTree = "<group>"; };
 		FC168BE6236DC0A5005ACA4E /* dataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dataModel.xcdatamodel; sourceTree = "<group>"; };
 		FC23DF5822E889D300E33693 /* Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menus.swift; sourceTree = "<group>"; };
@@ -171,7 +175,7 @@
 				FC08C2E3237ABF5200EC0879 /* recipe.swift */,
 				FC08C2E5237ABF6500EC0879 /* user.swift */,
 				FC08C2E7237ABF7300EC0879 /* utensil.swift */,
-				FC01FF8222EB64710016ABC5 /* SwipeView.swift */,
+				FC091210239A92C80097C0A7 /* recipeList.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -195,6 +199,7 @@
 		FC07DA2622BFA684003FB47A /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
+				FC01FF8222EB64710016ABC5 /* SwipeView.swift */,
 				FC6A3BFA22BE6941001CCB30 /* DesignableTextField.swift */,
 				FC07DA2A22BFA801003FB47A /* DesignableButton.swift */,
 				FCEB71BB22D76BFE00672093 /* SideMenuVC.swift */,
@@ -215,6 +220,14 @@
 				FC6A3BD322BE568F001CCB30 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FC0C5603239A5DED00F165D7 /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				FC0C5604239A603B00F165D7 /* Getters.swift */,
+			);
+			path = APIService;
 			sourceTree = "<group>";
 		};
 		FC6A3BBE22BE568D001CCB30 = {
@@ -243,6 +256,7 @@
 		FC6A3BC922BE568D001CCB30 /* Gram */ = {
 			isa = PBXGroup;
 			children = (
+				FC0C5603239A5DED00F165D7 /* APIService */,
 				FC01620B22EDC4D400135472 /* Model */,
 				FC07DA2722BFA774003FB47A /* Views */,
 				FC6A3BFF22BE6DC7001CCB30 /* img */,
@@ -491,12 +505,14 @@
 				FC23DF6322E9E7B200E33693 /* MenusTableViewCell.swift in Sources */,
 				FC08C2EA237AEF5000EC0879 /* inscriptionViewController.swift in Sources */,
 				FC23DF6722EA173900E33693 /* modeleMenu.swift in Sources */,
+				FC0C5605239A603B00F165D7 /* Getters.swift in Sources */,
 				FC08C2E0237ABF1600EC0879 /* order.swift in Sources */,
 				FC23DF6922EB348600E33693 /* FavorisViewController.swift in Sources */,
 				FC6A3BCB22BE568D001CCB30 /* AppDelegate.swift in Sources */,
 				FCEB71BC22D76BFF00672093 /* SideMenuVC.swift in Sources */,
 				FC07DA2B22BFA801003FB47A /* DesignableButton.swift in Sources */,
 				FC029F6C22E0CAC4002F531B /* MainVC.swift in Sources */,
+				FC091211239A92C80097C0A7 /* recipeList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
